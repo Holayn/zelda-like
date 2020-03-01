@@ -1,11 +1,30 @@
 extends "res://engine/entity.gd"
 
-const SPEED = 70
+var STATE = "DEFAULT"
+
+var keys = 0
 
 func _init():
 	TYPE = "PLAYER"
+	SPEED = 70
 
 func _physics_process(delta):
+	match STATE:
+		"DEFAULT":
+			state_default()
+		"SWING":
+			state_swing()
+	
+	keys = min(keys, 9)
+
+func state_swing():
+	anim_switch("idle")
+	damage_loop()
+	movement_loop(SPEED)
+	movedir = dir.center
+	
+
+func state_default():
 	controls_loop()
 	movement_loop(SPEED)
 	spritedir_loop()
@@ -24,7 +43,9 @@ func _physics_process(delta):
 		anim_switch("walk")
 	else:
 		anim_switch("idle")
-	
+		
+	if Input.is_action_just_pressed("a"):
+		use_item(preload("res://items/sword.tscn"))
 
 func controls_loop():
 	var LEFT = Input.is_action_pressed("ui_left")
