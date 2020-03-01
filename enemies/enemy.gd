@@ -6,7 +6,7 @@ var movetimer = 0
 func _init():
 	TYPE = "ENEMY"
 	SPEED = 40
-	DAMAGE = 1
+	DAMAGE = 0.25
 
 func _physics_process(delta):
 	movement_loop(SPEED)

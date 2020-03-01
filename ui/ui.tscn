@@ -4,7 +4,7 @@
 [ext_resource path="res://ui/numbers.png" type="Texture" id=2]
 [ext_resource path="res://ui/ui.gd" type="Script" id=3]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="ui" type="CanvasLayer"]
 script = ExtResource( 3 )
 
 [node name="bg" type="Sprite" parent="."]
@@ -15,3 +15,6 @@ texture = ExtResource( 1 )
 position = Vector2( 88.0095, 4.35548 )
 texture = ExtResource( 2 )
 hframes = 10
+
+[node name="hearts" type="Node2D" parent="."]
+position = Vector2( 94.6667, 4.5187 )
